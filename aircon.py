@@ -404,6 +404,7 @@ def set_status(args):
             (args.airflow, settings.airflow),
             (args.wind_ud, settings.wind_dir_ud),
             (args.wind_lr, settings.wind_dir_lr),
+            (args.op_mode, settings.op_mode),
             ]:
         if arg is not None:
             setting.set(arg)
@@ -512,6 +513,8 @@ def main():
     p_set.add_argument('--airflow', dest='airflow', type=int, choices=[0,1,2,3,4])
     p_set.add_argument('--wind-ud', dest='wind_ud', type=int, choices=[0,1,2,3,4])
     p_set.add_argument('--wind-lr', dest='wind_lr', type=int, choices=[0,1,2,3,4,5,6,7])
+    p_set.add_argument('--mode', dest='op_mode', type=int, choices=[0, 1, 2, 3, 4], help="Set operation mode: 0=Auto, 1=Cool, 2=Heat, 3=Fan, 4=Dry")
+
     p_set.set_defaults(on_off=None, func=set_status)
 
     args = parser.parse_args()
